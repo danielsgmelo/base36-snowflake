@@ -1,0 +1,33 @@
+{
+  "name": "base36-snowflake",
+  "version": "1.0.0-alpha.1",
+  "description": "a very simple base 36 id generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "serve": "NODE_ENV=production node src/server.js",
+    "performance-test": "docker-compose -f docker-compose.yaml -f docker-compose-k6.yaml up k6",
+    "crash-recovery-test": "jest --coverage=false __tests__/crash-recovery-test.js",
+    "test": "jest"
+  },
+  "author": "Daniel Melo",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "config": "^3.3.9",
+    "express": "^4.18.2",
+    "joi": "^17.7.0",
+    "ramda": "^0.28.0",
+    "sinon": "^15.0.1",
+    "supertest": "^6.3.3",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "jest": "^29.4.1",
+    "nodemon": "^2.0.20"
+  },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=18.0.0"
+  }
+}

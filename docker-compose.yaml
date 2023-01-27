@@ -1,0 +1,46 @@
+version: '3.5'
+services:
+  base36-snowflake-1:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    expose:
+      - "5678"
+    environment:
+      NODE_CONFIG: "{\"instance\":{\"id\":1},\"controlFile\":{\"path\":\"data/control_prod_1.txt\"}}"
+    volumes:
+      - ./data/control_prod_1.txt:/app/data/control_prod_1.txt
+  base36-snowflake-2:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    expose:
+      - "5678"
+    environment:
+      NODE_CONFIG: "{\"instance\":{\"id\":2},\"controlFile\":{\"path\":\"data/control_prod_2.txt\"}}"
+    volumes:
+      - ./data/control_prod_2.txt:/app/data/control_prod_2.txt
+  base36-snowflake-3:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    expose:
+      - "5678"
+    environment:
+      NODE_CONFIG: "{\"instance\":{\"id\":3},\"controlFile\":{\"path\":\"data/control_prod_3.txt\"}}"
+    volumes:
+      - ./data/control_prod_3.txt:/app/data/control_prod_3.txt
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - base36-snowflake-1
+      - base36-snowflake-2
+      - base36-snowflake-3
+    ports:
+      - "4000:4000"
+networks:
+  default:
+    driver: bridge
+    name: base36-snowflake
