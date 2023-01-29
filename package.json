@@ -1,6 +1,6 @@
 {
   "name": "base36-snowflake",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0",
   "description": "a very simple base 36 id generator",
   "main": "index.js",
   "scripts": {

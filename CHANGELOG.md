@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+## [1.0.0] - 2023-01-29
+
 ### Added 
 
-- first release
+- POST / API to generate new IDs
+- healthcheck available GET /health
+- test suite (unit tests, performance test, crash recovery test)
